@@ -2,8 +2,12 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from account.models import CustomUserModel
 
+
+
+
+@admin.register(CustomUserModel) #decoratorü ile admin.site.register() olayından kurtulmuş olduk. 
 class CustomAdmin(UserAdmin):
-    model = CustomUserModel
+
     list_display =(
         'username', 'email'
     )
@@ -12,4 +16,4 @@ class CustomAdmin(UserAdmin):
             'fields' : ['avatar']
         }), 
     )
-admin.site.register(CustomUserModel, CustomAdmin)
+
