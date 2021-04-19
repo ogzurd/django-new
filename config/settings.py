@@ -58,7 +58,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,5 +122,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [   #static dosyamızın dizinini belirttik
+    BASE_DIR/'static'
+]
+
 
 AUTH_USER_MODEL = 'account.CustomUserModel' #içerisinde avatar image si de olan yeni user modelimizi aktif ettik.
+
+import os
+
+MEDIA_URL = '/media/'  #media dan sonra gelen url leri almak için
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
