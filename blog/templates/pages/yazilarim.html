@@ -1,29 +1,38 @@
 {% extends 'base.html' %}
 
 
-{%block title%} Home Page {%endblock%}
+{%block title%} Yazilarim {%endblock%}
 
 
 {%block content%}
 
 {%if yazilar%}
-
-{%for yazi in yazilar%}
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{yazi.resim.url}}" alt="..." class = "img">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{yazi.baslik}}</h5>
-        <p class="card-text">{{yazi.icerik |safe|truncatechars_html:500}}</p>
-        <p class="card-text"><small class="text-muted">{{yazi.duzenlenme_tarihi | timesince}}</small></p>
-      </div>
-    </div>
-  </div>
-</div>
+<table class="table table-hover table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Resim</th>
+        <th scope="col">Yazı Başlığı</th>
+        <th scope="col">Yazı İçeriği</th>
+        <th scope="col">Güncellenme Tarihi</th>
+        <th scope="col">Aksiyonlar</th>
+      </tr>
+    </thead>
+    {%for yazi in yazilar%}
+<tbody>
+    <tr>
+      <th scope="row">{{yazi.id}}</th>
+      <td><img src="{{yazi.resim.url}}" alt="" style="width: 200px;"></td>
+      <td>{{yazi.baslik}}</td>
+      <td> {{yazi.icerik | safe | truncatechars_html:150}}</td>
+      <td>{{yazi.duzenlenme_tarihi | date}}</td>
+      <td>Aksiyonlar Gelecek</td>
+    </tr>
+</tbody>
 {%endfor%}
+   
+  </table>
+
 
 
 {%else%}
