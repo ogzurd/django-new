@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'account',
     'ckeditor',
+    'crispy_forms',
 
 ]
 
@@ -133,3 +134,5 @@ import os
 
 MEDIA_URL = '/media/'  #media dan sonra gelen url leri almak için
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

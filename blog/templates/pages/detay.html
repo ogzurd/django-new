@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{%block title%} Home Page {%endblock%}
+
+
+{%block content%}
+
+
+
+
+<div class="card mb-3"> 
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{yazi.resim.url}}" alt="..." class = "img" style="width: 100%; height: 350px;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{yazi.baslik}}</h5>
+        <p class="card-text">{{yazi.icerik |safe }}</p>
+        <p class="card-text"><small class="text-muted">{{yazi.duzenlenme_tarihi | timesince}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h3 style="margin-top: 75px; margin-bottom: 15px;">Yorumlar</h3>
+<hr>
+
+{%for yorum in yorumlar%}
+<div class="card">
+    <div class="card-body" style="display: flex; flex-direction: row;">
+        <div>
+           {% if yorum.yazan.avatar %}
+           <img src="{{yorum.yazan.avatar.url}}" class="rounded" class = "pt-4" width="75px" height="75px"
+           style="margin-right: 5px;"> 
+           {%else%}
+           <img src="{% static 'img/avatar.jpg' %}" class="rounded" class = "pt-4" width="75px" height="75px"
+           style="margin-right: 5px;">
+            {%endif%}
+        </div>
+        <div>
+            <h5 class="card-title">{{yorum.yazan}}</h5>
+            <p class="card-text">{{yorum.yorum}}</p>
+        </div>
+    </div>
+</div>
+{% empty %}
+<h4>There is no commet for this content.</h4>
+{%endfor%}
+
+
+
+
+
+
+
+{%endblock%}

@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
-
+{%load crispy_forms_tags%}
 
 {%block title%} Home Page {%endblock%}
 
 
 {%block content%}
 
-<h1>ilterişim</h1>
+<form  method="post" class="form-group">
+    {{ form.non_field_errors }}
+    {%csrf_token%}
+    {{form | crispy}}
+
+
+    <input type="submit" class = "btn btn-light" value="Mesajını Gönder!"
+     style="margin-top: 25px;margin-bottom: 25px; padding: 15px;">
+
+
+</form>
 
 {%endblock%}
