@@ -22,3 +22,4 @@ def iletisim(request):
         else:
             print("valid değil")
     return render(request,"pages/iletisim.html", context = {'form':form})
+    
