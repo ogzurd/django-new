@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {%block title%} Yazilarim {%endblock%}
 
@@ -15,7 +15,7 @@
         <th scope="col">Yazı Başlığı</th>
         <th scope="col">Yazı İçeriği</th>
         <th scope="col">Güncellenme Tarihi</th>
-        <th scope="col">Aksiyonlar</th>
+        <th scope="col" style="width: 150px;">Aksiyonlar</th>
       </tr>
     </thead>
     {%for yazi in yazilar%}
@@ -26,7 +26,16 @@
       <td>{{yazi.baslik}}</td>
       <td> {{yazi.icerik | safe | truncatechars_html:150}}</td>
       <td>{{yazi.duzenlenme_tarihi | date}}</td>
-      <td>Aksiyonlar Gelecek</td>
+      <td>
+        <p>
+          <a href="{% url 'yazi-guncelle' slug=yazi.slug%}"  class="btn btn-primary" style="margin-right: 7px;">
+            <i class="far fa-edit"></i>
+          </a>
+          <a href="{% url 'yazi-sil' slug=yazi.slug%}" class="btn btn-danger">
+            <i class="far fa-trash-alt"></i>
+          </a>
+        </p>
+      </td>
     </tr>
 </tbody>
 {%endfor%}
