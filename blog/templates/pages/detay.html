@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 
 {%block title%} Home Page {%endblock%}
@@ -43,8 +44,22 @@
 <h3 style="margin-top: 75px; margin-bottom: 15px;">Yorumlar</h3>
 <hr>
 
+
+{%if request.user.is_authenticated%}
+<form action="" method="POST">
+  {% csrf_token %}
+  {{yorum_ekle_form | crispy}}
+  <input type="submit" value="Yorum Yap" class="btn btn-success pt-3 pb-3 mb-4 mt-4" >
+</form>
+{%else%}
+<p>Yorum yapmak için üye girişi yapınız.</p>
+{%endif%}
+
+
+
+
 {%for yorum in yorumlar%}
-<div class="card">
+<div class="card" style="margin-bottom: 25px;">
     <div class="card-body" style="display: flex; flex-direction: row;">
         <div>
            {% if yorum.yazan.avatar %}
@@ -58,12 +73,28 @@
         <div>
             <h5 class="card-title">{{yorum.yazan}}</h5>
             <p class="card-text">{{yorum.yorum}}</p>
+            {%if yorum.yazan == request.user or yorum.yazi.yazar == request.user%}
+            <a href="{% url 'yorum-sil' id=yorum.id %}" class="btn btn-light card-text" 
+            style="width: 100px;
+            position: relative;
+            left: 750px;
+            top: 10px;
+            font-size: 12px;">
+              Yorum Sil
+            </a>
+           {%endif%}
+       
         </div>
+       
+          
+       
     </div>
 </div>
 {% empty %}
 <h4>There is no commet for this content.</h4>
 {%endfor%}
+
+
 
 
 

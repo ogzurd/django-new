@@ -25,12 +25,17 @@
          
          
           
-          
         </ul>
         <form class="d-flex" action="{%url 'anasayfa'%}">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  name="sorgu">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        
+        
+          <a href="{% url 'iletisim' %}" style="text-decoration: none; margin-left: 10px;" class="btn btn-danger" >
+            Bize Ulaşın
+          </a>
+        
       </div>
     </div>
   </nav>
