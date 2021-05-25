@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from blog.forms import IletisimForm
 from blog.models import IletisimModel
 
+
 def iletisim(request):
     form = IletisimForm()
     #formda submit ettiğimiz veriler post olarak yollanacak.
@@ -17,8 +18,8 @@ def iletisim(request):
             iletisim.save()
 
             #forms.ModelForm clasını kullandığımız için yukarıdakilerin hiçbiriniz yazmayıp
-            #sadece form.save() deseydik de yeterli olacaktır.
-            return redirect('anasayfa')
+            #sadece form.save() deseydik de yeterli olacaktır.***olmuyormuş. admin sayfasında görünmüyor***
+            return redirect('email-gonderildi')
         else:
             print("valid değil")
     return render(request,"pages/iletisim.html", context = {'form':form})

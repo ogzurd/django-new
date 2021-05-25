@@ -18,7 +18,7 @@ def anasayfa(request):
         ).distinct()
 
 
-    paginator = Paginator(yazilar, 2) #anasayfadaki kayıt sayısı.. (bir sayfada kaç kayıt olsun?)
+    paginator = Paginator(yazilar, 3) #anasayfadaki kayıt sayısı.. (bir sayfada kaç kayıt olsun?)
     return render(request, "pages/anasayfa.html", context={
         "yazilar":paginator.get_page(sayfa)  #/?sayfa=1 gibi isteklerimizi belirttik.
         })

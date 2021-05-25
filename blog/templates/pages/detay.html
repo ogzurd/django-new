@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 
-{%block title%} Home Page {%endblock%}
+{%block title%} Detail {%endblock%}
 
 
 {%block content%}
@@ -55,8 +55,7 @@
 <p>Yorum yapmak için üye girişi yapınız.</p>
 {%endif%}
 
-
-
+{% include 'components/message.html' %}
 
 {%for yorum in yorumlar%}
 <div class="card" style="margin-bottom: 25px;">

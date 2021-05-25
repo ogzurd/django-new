@@ -7,8 +7,9 @@ def yazi_ekle(request):
     form = YaziEkleModelForm(request.POST or None, files=request.FILES or None) # if request.method == post yapmak yerine..
 
     if form.is_valid():
-        yazi = form.save(commit=False) #bütün veriyi hazırla ama kaydetme
-        yazi.yazar = request.user  #yazarı kullanıcı olarak belirle
+        yazi = form.save(commit=False) #bütün veriyi kaydet ama işleme
+        yazi.yazar = request.user  #yazarı kullanıcı olarak belirle 
+        # çünkü formumuzda yazar inputu yok. Kendimiz belirlemeliyiz burada.
         yazi.save()  #ve kaydet
         form.save_m2m() #kategorideki verileri kaydetmek için manytomany kaydı yaptık.  
         return redirect('detay', slug = yazi.slug)

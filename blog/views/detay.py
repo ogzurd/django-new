@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import YazilarModel
 from blog.forms import YorumEkleModelForm
+
+
+
 def detay(request,slug):
     yazi = get_object_or_404(YazilarModel, slug=slug)
     yorumlar = yazi.yorumlar.order_by('-id')

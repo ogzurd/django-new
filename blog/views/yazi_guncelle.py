@@ -10,6 +10,9 @@ def yazi_guncelle(request,slug):
 
     if form.is_valid():
         form.save()
+        #burada neden yazi.yazar = request.user yapmadık, yazi ekle viewinde olduğu gibi?
+        #çünkü, güncelleme işlemini eklenen bir yazıya yapılır. 
+        #Daha önce yazı eklerken useri aldığımız için, birdaha güncellerken  yapmaya gerek yok        
         return redirect('detay', slug = yazi.slug)
     
     return render(request, 'pages/yazi_guncelle.html', context={'form':form})

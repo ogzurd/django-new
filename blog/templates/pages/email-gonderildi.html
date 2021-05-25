@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags%}
+
+{%block title%} Home Page {%endblock%}
+
+
+{%block content%}
+
+<!--sadece mesaj gonderdiğinde ulaşabileyim-->
+
+<p>Mesajın başarıyla gönderildi.</p>
+<a href="{%url 'anasayfa'%}">
+<lottie-player 
+src="https://assets6.lottiefiles.com/private_files/lf30_wq4zohch.json"  
+background="transparent"  
+speed="1"  
+style="width: 700px; height: 700px; text-align: center;"
+autoplay>
+</lottie-player>
+</a>
+
+{%endblock%}

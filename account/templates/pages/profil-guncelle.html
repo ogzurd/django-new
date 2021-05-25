@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 {%load crispy_forms_tags%}
 
-{%block title%} Update Content {%endblock%}
+{%block title%} Edit Your Profile {%endblock%}
 
 
 {%block content%}
 
 <form  method="post" class="form-group" enctype="multipart/form-data">
+    
     {{ form.non_field_errors }}
+    {%include 'components/message.html'%}
     {%csrf_token%}
-    {{ form.media }} <!---ck editor eklemek için -->
+    
     {{form | crispy}}
 
 
-    <input type="submit" class = "btn btn-light" value="Yazı Güncelle!"
+    <input type="submit" class = "btn btn-light" value="Güncelle!"
      style="margin-top: 25px;margin-bottom: 25px; padding: 15px;">
 
 
